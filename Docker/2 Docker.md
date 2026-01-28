@@ -50,6 +50,7 @@ Able to create resource with our hardware properties.
 ## **ARCHITECTURE & COMPONENTS:**
 Client: it will interact with user
 User gives commands and it will be executed by docker client
+
 **Deamon**: manages the Docker components (images, containers, volumes)
 **Host**: where we install Docker (ex: linux, windows, macOS)
 **Registry**: manages the images.
