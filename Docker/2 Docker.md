@@ -467,22 +467,23 @@ If we want to join the node to cluster again we need to paste the token on worke
 ## **DOCKER NETWORKING:**
 Docker networks are used to make communication between the multiple containers that are running on same or different docker hosts.
 
-We have different types of docker networks.                                                           
-**Bridge Network :**   Same Host                                            
-**Overlay Network :**  Different Host                                       
-**Host Network**                                                            
-**None Network**                                                           
+We have different types of docker networks. 
 
-**Bridge Network:**                                                         
+**1.Bridge Network :**     Same Host                                            
+**2.Overlay Network :**    Different Host                                       
+**3.Host Network**                                                            
+**4.None Network**                                                           
+
+**1.Bridge Network:**                                                         
 It is a default network that container will communicate with each other within the same host. 
 
-**Overlay Network:**                                                        
+**2.Overlay Network:**                                                        
 Used to communicate containers with each other across the multiple docker hosts.             
 
-**Host Network:**                                                           
+**3.Host Network:**                                                           
 When you want your container IP and EC2 instance IP same then you use host network.          
 
-**None Network:**                                                           
+**4.None Network:**                                                           
 When you don’t want the container to get exposed to the world, we use none network.                                                                    
 It will notprovide any network to our container.
 ```bash
