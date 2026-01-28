@@ -12,7 +12,9 @@ Multiple services are deployed on multiple servers with multiple databases.
 **BASED ON USERS AND APP COMPLEXITY WE NEED TO SELECT THE ARCHITECTURE.**
 
 FACTORS AFFECTING FOR USING MICRO SERVICES:
+
 F-1 : COST
+
 F-2 : MAINTAINANCE
 
 ## **CONTAINERS:**
