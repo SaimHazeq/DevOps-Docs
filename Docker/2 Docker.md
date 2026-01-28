@@ -464,20 +464,20 @@ If we want to join the node to cluster again we need to paste the token on worke
 ## **DOCKER NETWORKING:**
 Docker networks are used to make communication between the multiple containers that are running on same or different docker hosts.
 
-We have different types of docker networks.                                
-**Bridge Network :** Same Host
-**Overlay Network :** Different Host
-**Host Network**
-**None Network**
+We have different types of docker networks.                                                           
+**Bridge Network :** Same Host                                              
+**Overlay Network :** Different Host                                       
+**Host Network**                                                            
+**None Network**                                                           
 
-**Bridge Network:**
+**Bridge Network:**                                                         
 It is a default network that container will communicate with each other within the same host.
-**Overlay Network:**
+**Overlay Network:**                                                        
 Used to communicate containers with each other across the multiple docker hosts.
-**Host Network:**
+**Host Network:**                                                           
 When you want your container IP and EC2 instance IP same then you use host network.
-**None Network:**
-When you don’t want the container to get exposed to the world, we use none network.                                                                   
+**None Network:**                                                           
+When you don’t want the container to get exposed to the world, we use none network.                                                                    
 It will notprovide any network to our container.
 ```bash
 docker network create network_name   #to create a network
