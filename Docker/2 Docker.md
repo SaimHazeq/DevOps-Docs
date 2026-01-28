@@ -319,25 +319,24 @@ Once a command is downloaded we need to move it to               /usr/local/bin 
 
 Executable permission need to execute the command.
 ```bash
-vim docker-compose.yml
 version: '3.8'
 services:
-movies:
-image: movies:v1
-ports:
-- "81:80"
-train:
-image: train:v1
-ports:
-- "82:80"
-dth:
-image: dth:v1
-ports:
-- "83:80"
-recharge:
-image: recharge:v1
-ports:
-- "84:80"
+  movies:
+   image: movies:v1
+   ports:
+    - "81:80"
+  train:
+   image: train:v1
+   ports:
+    - "82:80"
+  dth:
+   image: dth:v1
+   ports:
+     - "83:80"
+  recharge:
+   image: recharge:v1
+   ports:
+     - "84:80"
 ```
 
 **COMMANDS:**
@@ -360,7 +359,7 @@ docker-compose restart  #to restart all the compose containers
 docker-compose scale cont_name=10   #to scale the service
 
 #CHANGING THE DEFAULT FILE
-By default the docker-compose will support the following names
+#By default the docker-compose will support the following names
 
 docker-compose.yml, docker-compose.yaml,
 compose.yml, compose.yaml
