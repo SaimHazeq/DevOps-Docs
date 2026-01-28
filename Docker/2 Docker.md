@@ -1,20 +1,18 @@
 # DOCKER
 
-**APPLICATION:** 
+**APPLICATION:**                                                          
 Collection of Service
 
-**MONOLITHIC:** 
+**MONOLITHIC:**                                                          
 Multiple services are deployed on single server with single database.
 
-**MICRO SERVICES:** 
+**MICRO SERVICES:**                                                      
 Multiple services are deployed on multiple servers with multiple databases.
 
 **BASED ON USERS AND APP COMPLEXITY WE NEED TO SELECT THE ARCHITECTURE.**
 
-FACTORS AFFECTING FOR USING MICRO SERVICES:
-
-F-1 : COST
-
+FACTORS AFFECTING FOR USING MICRO SERVICES:                               
+F-1 : COST                                                             
 F-2 : MAINTAINANCE
 
 ## **CONTAINERS:**
@@ -36,23 +34,20 @@ F-2 : MAINTAINANCE
 - Docker can run on any OS but it natively supports Linux distributions.
 
 ## **CONTAINERIZATION:**
-Process of packing an application with its dependencies.
-
-Ex: PUBG
-
-APP = PUBG & DEPENDENCY = MAPS
-
+Process of packing an application with its dependencies.                    
+Ex: PUBG                                                                 
+APP = PUBG & DEPENDENCY = MAPS                                            
 APP = CAKE & DEPENDENCY = KNIFE
 
 ## **VIRTUALIZATION:**
 Able to create resource with our hardware properties.
 
 ## **ARCHITECTURE & COMPONENTS:**
-Client: it will interact with user
+Client: it will interact with user                                          
 User gives commands and it will be executed by docker client
 
-**Deamon**: manages the Docker components (images, containers, volumes)
-**Host**: where we install Docker (ex: linux, windows, macOS)          
+**Deamon**: manages the Docker components (images, containers, volumes)     
+**Host**: where we install Docker (ex: linux, windows, macOS)               
 **Registry**: manages the images.
 
 ## **ARCHITECTURE OF DOCKER:**
@@ -72,8 +67,8 @@ docker run –it --name cont1 ubuntu   #to create a container
 cat /etc/os-release   #to see os flavor
 apt update -y         #to update
 ```
-redhat = yum
-ubuntu = apt
+redhat = yum                                                              
+ubuntu = apt                                                               
 Without update we can’t install any pkg in Ubuntu
 
 ```bash
