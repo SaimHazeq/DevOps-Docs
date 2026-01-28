@@ -46,9 +46,9 @@ Able to create resource with our hardware properties.
 Client: it will interact with user                                          
 User gives commands and it will be executed by docker client
 
-**Deamon**: manages the Docker components (images, containers, volumes)     
-**Host**: where we install Docker (ex: linux, windows, macOS)               
-**Registry**: manages the images.
+**Deamon**:   Manages the Docker components (images, containers, volumes)   
+**Host**:     Where we install Docker (ex: linux, windows, macOS)           
+**Registry**: Manages the images.
 
 ## **ARCHITECTURE OF DOCKER:**
 ```bash
@@ -124,17 +124,17 @@ docker rm $(docker ps -qa)
 docker rmi -f $(docker images -qa)
 ```
 ## **COMPONENTS:**
-**FROM** : used to base image                                              
-**RUN** : used to run Linux commands (During image creation)               
-**CMD** : used to run Linux commands (After container creation)             
-**ENTRYPOINT** : high priority than CMD                                    
-**COPY** : to copy local files to container                                 
-**ADD** : to copy internet files to container                              
-**WORKDIR** : to open required directory                                    
-**LABEL** : to add labels for Docker images                                
-**ENV** : to set environment variables (Inside Container)                   
-**ARGS** : to pass environment variables (Outside Container)                
-**EXPOSE** : to give port number
+**FROM**:       used to base image                                          
+**RUN**:        used to run Linux commands (During image creation)          
+**CMD**:        used to run Linux commands (After container creation)       
+**ENTRYPOINT**: high priority than CMD                                    
+**COPY**:       to copy local files to container                            
+**ADD**:        to copy internet files to container                         
+**WORKDIR**:    to open required directory                                  
+**LABEL**:      to add labels for Docker images                             
+**ENV**:        to set environment variables (Inside Container)             
+**ARGS**:       to pass environment variables (Outside Container)           
+**EXPOSE**:     to give port number
 
 EX-1:
 ```bash
@@ -186,7 +186,6 @@ docker build -t saim:v5 .
 docker run -it --name container5 saim:v5
 
 ## **APP Netflix – DEPLOYMENT**
-```bash
 yum install git -y
 git clone https://github.com/SaimHazeq/netflix-clone.git
 mv neflix-clone/*
@@ -207,7 +206,7 @@ It is used to store data inside container.
 Volume is a simple directory inside container.                             
 Containers uses host resources (cpu, ram, rom).                             
 Single volume can be shared to multiple containers.                         
-Ex: container-1 (vol1) --> container-2 (vol1) & container-3 (vol1) --> Cont4
+Ex: container-1 (vol1) --> container-2 (vol1) & container-3 (vol1) --> Cont4.                                                                      
 At a time we can share single volume to single container only.
 
 **METHOD-1:**
@@ -315,7 +314,9 @@ Second one is download commands we are going to download with the help of yum, a
 
 Some commands we can download on binary files.
 
-NOTE: Linux will not give some commands, so to use them we need to download separately.Once a command is downloaded we need to move it to               /usr/local/bin because all the userexecuted commands In Linux will store in /usr/local/bin                                                             
+NOTE: Linux will not give some commands, so to use them we need to download separately.                                                               
+Once a command is downloaded we need to move it to               /usr/local/bin because all the userexecuted commands In Linux will store in /usr/local/bin                                                              
+
 Executable permission need to execute the command.
 ```bash
 vim docker-compose.yml
@@ -358,9 +359,9 @@ docker-compose top      #to show the process of compose containers
 docker-compose restart  #to restart all the compose containers
 docker-compose scale cont_name=10   #to scale the service
 
-## **CHANGING THE DEFAULT FILE:**
+#CHANGING THE DEFAULT FILE
 By default the docker-compose will support the following names
-```bash
+
 docker-compose.yml, docker-compose.yaml,
 compose.yml, compose.yaml
 mv docker-compose.yml saim.yml
@@ -375,7 +376,7 @@ These images will work on only this server.
 git (local) --> github (internet) = to access by other                      
 image (local) --> dockerhub (internet) = to access by others
 
-**STEPS:**
+**STEPS:**                                                                 
 Create DockerHub account                                                   
 Create a Repository
 ```bash
@@ -410,7 +411,7 @@ Port: 2377
 Worker node will join on cluster by using a token.                          
 Manager node will give the token.                                           
 
-**SETUP:**
+**SETUP:**                                                                 
 Create 3 Servers                                                           
 Install docker and start the service                                       
 ```bash
@@ -425,7 +426,8 @@ docker swarm init (manager) --> #copy-paste the token to worker nodes.
 docker node ls
 ```
 **Note:** Individual containers are not going to replicate.                
-If we create a service then only containers will be distributed.            
+If we create a service then only containers will be distributed. 
+
 **Service:** It’s a way of exposing and managing multiple containers.       
 In service we can create copy of containers.                                
 That container copies will be distributed to all the nodes.                 
@@ -444,7 +446,8 @@ docker service logs movies      #to see the logs
 docker service rm movies        #to delete all services
 ```
 When scale down It follows LIFO pattern.                                   
-LIFO = LAST-IN-FIRST-OUT                                                   
+LIFO = LAST-IN-FIRST-OUT 
+
 **Note:**
 If we delete a container it will recreate automatically itself.            
 It is called as Self-Healing.                                               
@@ -465,8 +468,8 @@ If we want to join the node to cluster again we need to paste the token on worke
 Docker networks are used to make communication between the multiple containers that are running on same or different docker hosts.
 
 We have different types of docker networks.                                                           
-**Bridge Network :** Same Host                                              
-**Overlay Network :** Different Host                                       
+**Bridge Network :**   Same Host                                            
+**Overlay Network :**  Different Host                                       
 **Host Network**                                                            
 **None Network**                                                           
 
