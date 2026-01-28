@@ -111,28 +111,29 @@ ls
 ```
 
 ## **DOCKERFILE:**
-It is an Automation way to create Image.
-Here we use Components to create Image.
-In Dockerfile D must be Capital.
-Components also capital.
-This Dockerfile will be Reusable.
-Here we can create image directly without container help.
-Name: Dockerfile
-docker kill $(docker ps -qa)
-docker rm $(docker ps -qa)
+It is an Automation way to create Image.                                  
+Here we use Components to create Image.                                     
+In Dockerfile D must be Capital.                                           
+Components also capital.                                                  
+This Dockerfile will be Reusable.                                          
+Here we can create image directly without container help.                  
+Name: Dockerfile 
+```bash
+docker kill $(docker ps -qa)                                               
+docker rm $(docker ps -qa)     
 docker rmi -f $(docker images -qa)
-
+```
 ## **COMPONENTS:**
-**FROM** : used to base image
-**RUN** : used to run Linux commands (During image creation)
-**CMD** : used to run Linux commands (After container creation)
-**ENTRYPOINT** : high priority than CMD
-**COPY** : to copy local files to container
-**ADD** : to copy internet files to container
-**WORKDIR** : to open required directory
-**LABEL** : to add labels for Docker images
-**ENV** : to set environment variables (Inside Container)
-**ARGS** : to pass environment variables (Outside Container)
+**FROM** : used to base image                                              
+**RUN** : used to run Linux commands (During image creation)               
+**CMD** : used to run Linux commands (After container creation)             
+**ENTRYPOINT** : high priority than CMD                                    
+**COPY** : to copy local files to container                                 
+**ADD** : to copy internet files to container                              
+**WORKDIR** : to open required directory                                    
+**LABEL** : to add labels for Docker images                                
+**ENV** : to set environment variables (Inside Container)                   
+**ARGS** : to pass environment variables (Outside Container)                
 **EXPOSE** : to give port number
 
 EX-1:
@@ -202,10 +203,10 @@ docker run -it --name netflix1 -p 80:80 netflix:v1
 ```
 
 ## **VOLUMES:**
-It is used to store data inside container.
-Volume is a simple directory inside container.
-Containers uses host resources (cpu, ram, rom).
-Single volume can be shared to multiple containers.
+It is used to store data inside container.                                  
+Volume is a simple directory inside container.                             
+Containers uses host resources (cpu, ram, rom).                             
+Single volume can be shared to multiple containers.                         
 Ex: container-1 (vol1) --> container-2 (vol1) & container-3 (vol1) --> Cont4
 At a time we can share single volume to single container only.
 
@@ -255,16 +256,16 @@ ls /volume4
 
 ## **DOCKER SYSTEM COMMANDS:**
 Used to know complete information about the docker elements.
-
+```bash
 docker system df         #to give info of docker objects
 docker system df -v
 docker inspect container4 | grep -i volume
 docker inspect container5 | grep –I volume
 docker system prune      #to remove unused objects of docker
-
+```
 ## **DOCKER MEMORY MANAGEMENT:**
-Containers uses our host resources (cpu, mem)
-By default we don’t have any limits for containers
+Containers uses our host resources (cpu, mem)                            
+By default we don’t have any limits for containers                          
 We need to set it
 ```bash
 docker run -itd --name container1 --memory=”200mb” --cpus=”0.2” ubuntu
@@ -289,15 +290,15 @@ docker kill $(docker ps -a -q) : to kill all containers
 docker rm $(docker ps -a -q) : to remove all containers
 ```
 
-NOTE: In the above process all the containers are managed and created one by one.
-In real time we manage all the containers at same time so for that purpose we are going to use
+NOTE: In the above process all the containers are managed and created one by one.                                                                     
+In real time we manage all the containers at same time so for that purpose  we are going to use                                                        
 the concept called Docker Compose.
 
 ## **DOCKER COMPOSE:**
-It’s a tool used to manage multiple containers in single host.
-We can create, start, stop, and delete all containers together.
-We write container information in a file called Compose file.
-Inside the compose file we can give images, ports, and volumes info of containers.
+It’s a tool used to manage multiple containers in single host.              
+We can create, start, stop, and delete all containers together.             
+We write container information in a file called Compose file.               
+Inside the compose file we can give images, ports, and volumes info of containers.                                                                
 We need to download this tool and use it.
 
 **INSTALLATION:**
@@ -309,14 +310,12 @@ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 docker-compose version
 ```
-In Linux majorly you are having two type of commands first one is inbuilt commands which come
-with the operating system by default.
-Second one is download commands we are going to download with the help of yum, apt, or
-amazon linux extras command.
+In Linux majorly you are having two type of commands first one is inbuilt commands which come with the operating system by default.                   
+Second one is download commands we are going to download with the help of yum, apt, or amazon linux extras command.
 
 Some commands we can download on binary files.
 
-NOTE: Linux will not give some commands, so to use them we need to download separately.Once a command is downloaded we need to move it to /usr/local/bin because all the userexecuted commands In Linux will store in /usr/local/bin
+NOTE: Linux will not give some commands, so to use them we need to download separately.Once a command is downloaded we need to move it to               /usr/local/bin because all the userexecuted commands In Linux will store in /usr/local/bin                                                             
 Executable permission need to execute the command.
 ```bash
 vim docker-compose.yml
@@ -341,6 +340,7 @@ ports:
 ```
 
 **COMMANDS:**
+```bash
 docker-compose up -d    #to create and start all containers
 docker-compose stop     #to stop all containers
 docker-compose start    #to start all containers
@@ -369,14 +369,14 @@ docker-compose -f saim.yml up -d
 docker-compose -f saim.yml ps
 docker-compose -f saim.yml down
 ```
-Images we create on server.
-These images will work on only this server.
+Images we create on server.                                                
+These images will work on only this server.                                 
 
-git (local) --> github (internet) = to access by other
+git (local) --> github (internet) = to access by other                      
 image (local) --> dockerhub (internet) = to access by others
 
 **STEPS:**
-Create DockerHub account
+Create DockerHub account                                                   
 Create a Repository
 ```bash
 docker tag container_name user_name/repository_name
@@ -395,43 +395,44 @@ docker push user_name/ repository_name
 docker rmi -f $(docker image –q)
 docker pull user_name/repository_name:latest
 ```
-**High Availability:** More than one server
+**High Availability:** More than one server                                 
 **Why**: If one server got deleted than other server will gives the app.
 
 ## **DOCKER SWARM:**
-It’s an orchestration tool for containers.
-Used to manage multiple containers on multiple servers.
-Here we create a cluster (group of servers).
-In that cluster we can create same container on multiple servers.
-Here we have the manager node and worker node.
-Manager node’s main purpose is to maintain the container.
-Without Docker engine we can’t create the cluster.
-Port: 2377
-Worker node will join on cluster by using a token.
-Manager node will give the token.
+It’s an orchestration tool for containers.                                 
+Used to manage multiple containers on multiple servers.                    
+Here we create a cluster (group of servers).                                
+In that cluster we can create same container on multiple servers.           
+Here we have the manager node and worker node.                             
+Manager node’s main purpose is to maintain the container.                  
+Without Docker engine we can’t create the cluster.                         
+Port: 2377                                                                  
+Worker node will join on cluster by using a token.                          
+Manager node will give the token.                                           
 
 **SETUP:**
-Create 3 Servers
-Install docker and start the service
+Create 3 Servers                                                           
+Install docker and start the service                                       
+```bash
 yum install docker –y
 systemctl start docker
 hostnamectl set-hostname Manager
 hostnamectl set-hostname Worker-1
 hostnamectl set-hostnamce Worker-2
-Enable 2377 port
+#Enable 2377 port
 
-docker swarm init (manager) --> copy-paste the token to worker nodes.
+docker swarm init (manager) --> #copy-paste the token to worker nodes.
 docker node ls
+```
+**Note:** Individual containers are not going to replicate.                
+If we create a service then only containers will be distributed.            
+**Service:** It’s a way of exposing and managing multiple containers.       
+In service we can create copy of containers.                                
+That container copies will be distributed to all the nodes.                 
+Service --> Containers --> Distributed to nodes                            
 
-**Note:** Individual containers are not going to replicate.
-If we create a service then only containers will be distributed.
-**Service:** It’s a way of exposing and managing multiple containers.
-In service we can create copy of containers.
-That container copies will be distributed to all the nodes.
-Service --> Containers --> Distributed to nodes
-
-docker service create --name container_name --replicas 3 -p 81:80
-saimhazeq/container_name:latest
+`docker service create --name container_name --replicas 3 -p 81:80
+saimhazeq/container_name:latest`
 ```bash
 docker service ls               #to list services
 docker service inspect movies   #to get complete information of service
@@ -442,11 +443,11 @@ docker service rollback movies  #to go previous state
 docker service logs movies      #to see the logs
 docker service rm movies        #to delete all services
 ```
-When scale down It follows LIFO pattern.
-LIFO = LAST-IN-FIRST-OUT
+When scale down It follows LIFO pattern.                                   
+LIFO = LAST-IN-FIRST-OUT                                                   
 **Note:**
-If we delete a container it will recreate automatically itself.
-It is called as Self-Healing.
+If we delete a container it will recreate automatically itself.            
+It is called as Self-Healing.                                               
 
 ## **CLUSTER ACTIVITIES:**
 ```bash
@@ -457,14 +458,13 @@ docker node inspect node_id        #to get complete info of worker node
 docker swarm join-token (manager)  #to generate the token to join
 ```
 **Note:**
-We can’t delete the node which is ready state.
+We can’t delete the node which is ready state.                              
 If we want to join the node to cluster again we need to paste the token on worker node.
 
 ## **DOCKER NETWORKING:**
-Docker networks are used to make communication between the multiple containers that are
-running on same or different docker hosts.
+Docker networks are used to make communication between the multiple containers that are running on same or different docker hosts.
 
-We have different types of docker networks.
+We have different types of docker networks.                                
 **Bridge Network :** Same Host
 **Overlay Network :** Different Host
 **Host Network**
@@ -477,8 +477,8 @@ Used to communicate containers with each other across the multiple docker hosts.
 **Host Network:**
 When you want your container IP and EC2 instance IP same then you use host network.
 **None Network:**
-When you don’t want the container to get exposed to the world, we use none network. It will not
-provide any network to our container.
+When you don’t want the container to get exposed to the world, we use none network.                                                                   
+It will notprovide any network to our container.
 ```bash
 docker network create network_name   #to create a network
 docker network rm network_name       #to see the list
