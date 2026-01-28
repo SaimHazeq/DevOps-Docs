@@ -474,11 +474,14 @@ We have different types of docker networks.
 **None Network**                                                           
 
 **Bridge Network:**                                                         
-It is a default network that container will communicate with each other within the same host.                                                       
+It is a default network that container will communicate with each other within the same host. 
+
 **Overlay Network:**                                                        
-Used to communicate containers with each other across the multiple docker hosts.                                                                      
+Used to communicate containers with each other across the multiple docker hosts.             
+
 **Host Network:**                                                           
-When you want your container IP and EC2 instance IP same then you use host network.                                                                    
+When you want your container IP and EC2 instance IP same then you use host network.          
+
 **None Network:**                                                           
 When you don’t want the container to get exposed to the world, we use none network.                                                                    
 It will notprovide any network to our container.
