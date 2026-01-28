@@ -37,8 +37,11 @@ F-2 : MAINTAINANCE
 
 ## **CONTAINERIZATION:**
 Process of packing an application with its dependencies.
+
 Ex: PUBG
+
 APP = PUBG & DEPENDENCY = MAPS
+
 APP = CAKE & DEPENDENCY = KNIFE
 
 ## **VIRTUALIZATION:**
