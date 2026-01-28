@@ -22,15 +22,15 @@ OS will be on images.
 It’s free of cost and can create multiple containers.
 
 ## **DOCKER:**
-It’s an free & open-source.
-It is platform independent.
-Used to create, run & deploy applications on containers.
-It is introduced on 2013 by solomen hykes & Sebastian phal.
-We used GO language to develop the Docker.
-Here we write files on YAML.
-Before Docker user faced lot of problems, but after Docker there is no issues with the application.
-Docker will use host resources (cpu, mem, n/w, os).
-Docker can run on any OS but it natively supports Linux distributions.
+ It’s an free & open-source.
+ It is platform independent.
+ Used to create, run & deploy applications on containers.
+ It is introduced on 2013 by solomen hykes & Sebastian phal.
+ We used GO language to develop the Docker.
+ Here we write files on YAML.
+ Before Docker user faced lot of problems, but after Docker there is no  issues with the application.
+ Docker will use host resources (cpu, mem, n/w, os).
+ Docker can run on any OS but it natively supports Linux distributions.
 
 ## **CONTAINERIZATION:**
 Process of packing an application with its dependencies.
