@@ -1,12 +1,12 @@
 # DOCKER
 
-## **APPLICATION: 
+## **APPLICATION:**
 Collection of Service
 
-## **MONOLITHIC:
+## **MONOLITHIC:**
 Multiple services are deployed on single server with single database.
 
-## **MICRO SERVICES:
+## **MICRO SERVICES:**
 Multiple services are deployed on multiple servers with multiple databases.
 
 ## BASED ON USERS AND APP COMPLEXITY WE NEED TO SELECT THE ARCHITECTURE.**
@@ -49,27 +49,27 @@ User gives commands and it will be executed by docker client
 **Registry**: manages the images.
 
 ## **ARCHITECTURE OF DOCKER:**
-'''bash
+```bash
 yum install docker -y #client
 systemctl start docker #client, Engine
 systemctl status docker
-'''
+```
 
 COMMANDS:
 
-'''bash
+```bash
 docker pull ubuntu    #pull ubuntu image
 docker images         #to see list of images
 docker run –it --name cont1 ubuntu   #to create a container
 -it (interactive)     #to go inside a container
 cat /etc/os-release   #to see os flavor
 apt update -y         #to update
-'''
+```
 redhat = yum
 ubuntu = apt
 Without update we can’t install any pkg in Ubuntu
 
-'''bash
+```bash
 apt install git -y
 apt install apache2 -y
 service apache2 start
@@ -85,11 +85,11 @@ docker inspect cont_name  #to get complete info of a container
 docker rm cont_name       #to delete a container
 STOP       #will wait to finish all process running inside container
 KILL       #won’t wait to finish all process running inside container
-'''
+```
 
 ## **OS LEVEL OFVIRTUALIZATION:**
 
-'''bash
+```bash
 docker pull ubuntu
 docker run -it --name container1 ubuntu
 apt update -y
@@ -106,7 +106,7 @@ apache -v
 mysql-server -version
 python3 --version
 ls
-'''
+```
 
 ## **DOCKERFILE:**
 It is an Automation way to create Image.
@@ -134,16 +134,16 @@ docker rmi -f $(docker images -qa)
 **EXPOSE** : to give port number
 
 EX-1:
-'''bash
+```bash
 FROM ubuntu
 RUN apt update -y
 RUN apt install apache2 -y
 docker build -t saim:v1 .
 docker run -it --name container1 saim:v1
-'''
+```
 
 EX-2:
-'''bash
+```bash
 FROM ubuntu
 RUN apt update -y
 RUN apt install apache2 -y
@@ -151,19 +151,19 @@ RUN apt install python3 -y
 CMD apt install mysql-server -y
 docker build -t saim:v2 .
 docker run -it --name container2 saim:v2
-'''
+```
 
 EX-3:
-'''bash
+```bash
 FROM ubuntu
 COPY index.html /tmp
 ADD http://dlcdn.apache.org/tomcat/tomcat-9/v9.0.89/bin/apache-tomcat-9.0.89.tar.gz /tmp
 docker build -t saim:v3 .
 docker run -it --name container3 saim:v3
-'''
+```
 
 EX-4:
-'''bash
+```bash
 FROM ubuntu
 COPY index.html /tmp
 ADD http://dlcdn.apache.org/tomcat/tomcat-9/v9.0.89/bin/apache-tomcat-9.0.89.tar.gz /tmp
@@ -171,10 +171,10 @@ WORKDIR /tmp
 LABEL author Saimhazeq
 docker build -t saim:v4 .
 docker run -it --name container4 saim:v4
-'''
+```
 
 EX-5:
-'''bash
+```bash
 FROM ubuntu
 LABEL author Saimhazeq
 ENV client swiggy
@@ -183,21 +183,21 @@ docker build -t saim:v5 .
 docker run -it --name container5 saim:v5
 
 ## **APP Netflix – DEPLOYMENT**
-'''bash
+```bash
 yum install git -y
 git clone https://github.com/SaimHazeq/netflix-clone.git
 mv neflix-clone/*
-'''
+```
 
 ## **Dockerfile**
-'''bash
+```bash
 FROM apt update
 RUN apt install apache2 -y
 COPY * /var/www/html/
 CMD [“/usr/sbin/apachectl”, “-D”, “FOREGROUND”]
 docker build -t Netflix:v1 .
 docker run -it --name netflix1 -p 80:80 netflix:v1
-'''
+```
 
 ## **VOLUMES:**
 It is used to store data inside container.
@@ -209,7 +209,7 @@ At a time we can share single volume to single container only.
 
 **METHOD-1:**
 DOCKER FILE:
-'''bash
+```bash
 FROM ubuntu
 Volume [“/volume1”]
 docker build -t saim:v1 .
@@ -219,37 +219,37 @@ touch file{1..5}
 cat>file1
 ctrl p q
 docker run -it --name container1 --volumes-from container1 ubuntu
-'''
+```
 **METHOD-2:**
 FROM CLI:
-'''bash
+```bash
 docker run -it --name container3 -v volume2 ubuntu
 cd volume1/
 touch java{1..5}
 ctrl p q
 docker run -it --name container4 --volumes-from container3 ubuntu
-'''
+```
 
 **METHOD-3:**
 VOLUME MOUNTING:
-'''bash
+```bash
 docker volume ls : to list volumes
 docker volume create name : to create volume
 docker volume inspect volume3 : to get info of volume3
 cd /var/lib/docker/volumes/volume3/_data
 touch python{1..5}
 docker run -it --name container5 --mount source=volume3,destination=/volume ubuntu
-'''
+```
 
 HOST --> CONTAINER:
-'''bash
+```bash
 cd /root
 touch saim{1..5}
 docker volume inspect volume4
 cp * /var/lib/docker/volumes/volume4/_data
 docker attach container6
 ls /volume4
-'''
+```
 
 ## **DOCKER SYSTEM COMMANDS:**
 Used to know complete information about the docker elements.
@@ -264,7 +264,7 @@ docker system prune      #to remove unused objects of docker
 Containers uses our host resources (cpu, mem)
 By default we don’t have any limits for containers
 We need to set it
-'''bash
+```bash
 docker run -itd --name container1 --memory=”200mb” --cpus=”0.2” ubuntu
 docker inspect container1
 docker stats
@@ -285,7 +285,7 @@ docker run -itd --name recharge -p 84:80 recharge:v1
 docker ps -a -q : to list container id’s
 docker kill $(docker ps -a -q) : to kill all containers
 docker rm $(docker ps -a -q) : to remove all containers
-'''
+```
 
 NOTE: In the above process all the containers are managed and created one by one.
 In real time we manage all the containers at same time so for that purpose we are going to use
@@ -299,14 +299,14 @@ Inside the compose file we can give images, ports, and volumes info of container
 We need to download this tool and use it.
 
 **INSTALLATION:**
-'''bash
+```bash
 Sudo curl -L “https://github.com/docker/compose/release/download/Vesion/docker-compose-
 $(uname -s)-$(uname -m)” -o /usr/local/bin/docker-compose
 ls /usr/local/bin/
 sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 docker-compose version
-'''
+```
 In Linux majorly you are having two type of commands first one is inbuilt commands which come
 with the operating system by default.
 Second one is download commands we are going to download with the help of yum, apt, or
@@ -316,7 +316,7 @@ Some commands we can download on binary files.
 
 NOTE: Linux will not give some commands, so to use them we need to download separately.Once a command is downloaded we need to move it to /usr/local/bin because all the userexecuted commands In Linux will store in /usr/local/bin
 Executable permission need to execute the command.
-'''bash
+```bash
 vim docker-compose.yml
 version: '3.8'
 services:
@@ -336,7 +336,7 @@ recharge:
 image: recharge:v1
 ports:
 - "84:80"
-'''
+```
 
 **COMMANDS:**
 docker-compose up -d    #to create and start all containers
@@ -358,7 +358,7 @@ docker-compose scale cont_name=10   #to scale the service
 
 ## **CHANGING THE DEFAULT FILE:**
 By default the docker-compose will support the following names
-'''bash
+```bash
 docker-compose.yml, docker-compose.yaml,
 compose.yml, compose.yaml
 mv docker-compose.yml saim.yml
@@ -366,7 +366,7 @@ docker-compose up -d : throws an error
 docker-compose -f saim.yml up -d
 docker-compose -f saim.yml ps
 docker-compose -f saim.yml down
-'''
+```
 Images we create on server.
 These images will work on only this server.
 
@@ -376,7 +376,7 @@ image (local) --> dockerhub (internet) = to access by others
 **STEPS:**
 Create DockerHub account
 Create a Repository
-'''bash
+```bash
 docker tag container_name user_name/repository_name
 docker login --> username & password
 docker push user_name/ repository_name
@@ -392,7 +392,7 @@ docker push user_name/ repository_name
 
 docker rmi -f $(docker image –q)
 docker pull user_name/repository_name:latest
-'''
+```
 **High Availability:** More than one server
 **Why**: If one server got deleted than other server will gives the app.
 
@@ -430,7 +430,7 @@ Service --> Containers --> Distributed to nodes
 
 docker service create --name container_name --replicas 3 -p 81:80
 saimhazeq/container_name:latest
-'''bash
+```bash
 docker service ls               #to list services
 docker service inspect movies   #to get complete information of service
 docker service ps movies        #to list the containers of movies
@@ -439,7 +439,7 @@ docker service scale movies=3   #to scale out the containers
 docker service rollback movies  #to go previous state
 docker service logs movies      #to see the logs
 docker service rm movies        #to delete all services
-'''
+```
 When scale down It follows LIFO pattern.
 LIFO = LAST-IN-FIRST-OUT
 **Note:**
@@ -447,13 +447,13 @@ If we delete a container it will recreate automatically itself.
 It is called as Self-Healing.
 
 ## **CLUSTER ACTIVITIES:**
-'''bash
+```bash
 docker swarm leave (worker)        #to make node inactive from cluster
 #To active the node copy the token.
 docker node rm node_id (manager)   #to delete worker node which is on down state
 docker node inspect node_id        #to get complete info of worker node
 docker swarm join-token (manager)  #to generate the token to join
-'''
+```
 **Note:**
 We can’t delete the node which is ready state.
 If we want to join the node to cluster again we need to paste the token on worker node.
@@ -477,7 +477,7 @@ When you want your container IP and EC2 instance IP same then you use host netwo
 **None Network:**
 When you don’t want the container to get exposed to the world, we use none network. It will not
 provide any network to our container.
-'''bash
+```bash
 docker network create network_name   #to create a network
 docker network rm network_name       #to see the list
 docker network inspect network_name  #to inspect
