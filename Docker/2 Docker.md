@@ -1,12 +1,12 @@
 # DOCKER
 
-## **APPLICATION:**
+## *APPLICATION:*
 Collection of Service
 
-## **MONOLITHIC:**
+## *MONOLITHIC:*
 Multiple services are deployed on single server with single database.
 
-## **MICRO SERVICES:**
+## *MICRO SERVICES:*
 Multiple services are deployed on multiple servers with multiple databases.
 
 ## BASED ON USERS AND APP COMPLEXITY WE NEED TO SELECT THE ARCHITECTURE.**
